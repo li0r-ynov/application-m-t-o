@@ -1,10 +1,7 @@
 {
     "latitude": 43.6439,
     "longitude": 5.0511584,
-    "generationtime_ms": 166.28122329711914,
-    "utc_offset_seconds": 0,
     "timezone": "GMT",
-    "timezone_abbreviation": "GMT",
     "elevation": 74.0,
     "hourly_units": {
         "time": "iso8601",

@@ -1,6 +1,6 @@
 package models
 
-type Meteo struct {
+type Communes struct {
 	Name        string        `json:"nom"`
 	Code        string        `json:"code"`
 	Score       float64       `json:"_score"`
