@@ -1,7 +1,7 @@
 package api
 
 var (
-	baseURL = "https://geo.api.gouv.fr/communes?nom=Salon&fields=nom,code,centre"
+	baseCommunesURL = "https://geo.api.gouv.fr"
 )
 
-func get
+func get()
