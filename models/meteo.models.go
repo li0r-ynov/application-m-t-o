@@ -9,6 +9,10 @@ type Meteo struct {
 	DailyUnits           DailyUnits `json:"daily_units"`
 	Daily                Daily      `json:"daily"`
 	CommuneName          string     `json:"-"`
+	MapURL               string
+	TemperatureMinWeek   float64
+	TemperatureMaxWeek   float64
+	TemperatureBars      []TemperatureBar
 }
 
 type DailyUnits struct {
@@ -23,4 +27,9 @@ type Daily struct {
 	TemperatureMax []float64 `json:"temperature_2m_max"`
 	TemperatureMin []float64 `json:"temperature_2m_min"`
 	WeatherCode    []int     `json:"weather_code"`
+}
+
+type TemperatureBar struct {
+	Left  float64
+	Width float64
 }

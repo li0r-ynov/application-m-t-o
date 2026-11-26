@@ -3,15 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Résultats de recherche</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <h1>Choisissez une ville</h1>
-    {{range .}}
-    <form action="/meteo" method="GET">
-      <input type="hidden" name="commune" value="{{.Name}}" />
-      <button type="submit">{{.Name}} ({{.Code}})</button>
-    </form>
-    {{end}}
+    <main class="container">
+      <h1>Choisissez une commune</h1>
+
+      <div class="city-list">
+        {{range .}}
+        <a class="city-link" href="/meteo?code={{.Code}}">
+          <strong>{{.Name}}</strong>
+          <p>Code INSEE : {{.Code}}</p>
+          <p>Population : {{.Population}}</p>
+        </a>
+        {{end}}
+      </div>
+
+      <a href="/" class="back-link">Retour à l'accueil</a>
+    </main>
   </body>
 </html>

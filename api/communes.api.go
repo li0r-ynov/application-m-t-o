@@ -17,4 +17,10 @@ func SearchCommunesByName(query string) ([]models.Communes, error) {
 	return resultCommunes, err
 }
 
+func SearchCommuneByCode(code string) ([]models.Communes, error) {
+	url := fmt.Sprintf("%s/communes?code=%s&fields=code,nom,population,centre", baseCommunesURL, code)
 
+	var resultCommunes []models.Communes
+	err := get(url, &resultCommunes)
+	return resultCommunes, err
+}

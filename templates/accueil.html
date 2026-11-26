@@ -3,17 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rechercher unve ville</title>
+    <title>Accueil - Météo</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
-  <h1>Rechercher une ville</h1>
+  <body>
+    <main class="container">
+      <h1>Quelle météo fait-il chez vous ?</h1>
+      <p>
+        Recherchez une commune pour consulter ses prévisions météorologiques.
+      </p>
 
-  <form action="/villes" method="GET">
-    <input
-      type="text"
-      name="commune"
-      placeholder="Entrez le nom d'une ville"
-      required
-    />
-    <button type="submit">Rechercher</button>
-  </form>
+      <form action="/ville" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          class="search-input"
+          placeholder="Exemple : Aix-en-Provence"
+          required
+        />
+        <button type="submit" class="search-button">Rechercher</button>
+      </form>
+    </main>
+  </body>
 </html>

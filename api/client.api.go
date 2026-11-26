@@ -16,7 +16,7 @@ var client = &http.Client{
 
 func get(endpoint string, dest any) error {
 	// 1. Préparer la requête : méthode, URL et corps (nil pour un GET).
-	request, err := http.NewRequest(http.MethodGet, baseMeteoURL+baseCommunesURL+endpoint, nil)
+	request, err := http.NewRequest(http.MethodGet, endpoint, nil)
 	if err != nil {
 		return fmt.Errorf("création de la requête : %w", err)
 	}

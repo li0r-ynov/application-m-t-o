@@ -4,14 +4,12 @@ import (
 	"log"
 	"net/http"
 
-	"API-APPLICATION-METEO/helpers"
-	"API-APPLICATION-METEO/routes"
+	"meteo/routes"
 )
 
 func main() {
-	helpers.LoadTemplates()
-	router := routes.MainRouter()
+	routes.SetupRoutes()
 
 	log.Println("Serveur lancé sur http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
