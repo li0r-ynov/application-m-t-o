@@ -1,13 +1,22 @@
 [
     {
-        "nom": "Salon-de-Provence",
-        "code": "13103",
+        "code": "13001",
+        "nom": "Aix-en-Provence",
+        "codesPostaux": [
+            "13080",
+            "13090",
+            "13100",
+            "13290",
+            "13540"
+        ],
+        "population": 149695,
         "centre": {
             "type": "Point",
             "coordinates": [
-                5.049,
-                43.643
+                5.3879,
+                43.536
             ]
-        }
+        },
+        "_score": 0.5759028149828533
     }
 ]

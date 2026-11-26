@@ -1,8 +1,9 @@
 package models
 
 type Communes struct {
-	Name   string   `json:"nom"`
 	Code   string   `json:"code"`
+	Name   string   `json:"nom"`
+	CodesPostaux
 	Centre []Centre `json:"centre"`
 }
 
