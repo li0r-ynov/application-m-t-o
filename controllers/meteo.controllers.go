@@ -3,8 +3,8 @@ package controllers
 import (
 	"errors"
 	"meteo/helpers"
-	"meteo/services"
 	"meteo/models"
+	"meteo/services"
 	"net/http"
 	"strings"
 )
@@ -20,24 +20,27 @@ func MeteoController(w http.ResponseWriter, r *http.Request) {
 		RenderAPIError(w, err)
 		return
 	}
-	helpers.Render(w, http.StatusOK, "commune")
+	if err := helpers.Render(w, http.StatusOK, "resultat", meteo); err != nil {
+		http.Error(w, "Erreur lors de l'affichage de la météo", http.StatusInternalServerError)
+		return
+	}
 }
 
-func RenderAPIError(w http.ResponseWriter, err error){
+func RenderAPIError(w http.ResponseWriter, err error) {
 	switch {
-    case errors.Is(err, models.ErrNotFound):
-        http.Error(w, "Commune introuvable", http.StatusNotFound)
+	case errors.Is(err, models.ErrNotFound):
+		http.Error(w, "Commune introuvable", http.StatusNotFound)
 
-    case errors.Is(err, models.ErrBadRequest):
-        http.Error(w, "Requête invalide", http.StatusBadRequest)
+	case errors.Is(err, models.ErrBadRequest):
+		http.Error(w, "Requête invalide", http.StatusBadRequest)
 
-    case errors.Is(err, models.ErrUnavailable):
-        http.Error(w, "Service indisponible", http.StatusServiceUnavailable)
+	case errors.Is(err, models.ErrUnavailable):
+		http.Error(w, "Service indisponible", http.StatusServiceUnavailable)
 
-    case errors.Is(err, models.ErrTimeout):
-        http.Error(w, "Délai d'attente dépassé", http.StatusGatewayTimeout)
+	case errors.Is(err, models.ErrTimeout):
+		http.Error(w, "Délai d'attente dépassé", http.StatusGatewayTimeout)
 
-    default:
-        http.Error(w, "Erreur interne du serveur", http.StatusInternalServerError)
-    }
+	default:
+		http.Error(w, "Erreur interne du serveur", http.StatusInternalServerError)
+	}
 }

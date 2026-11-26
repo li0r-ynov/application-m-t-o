@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"pokemon/models"
+	"meteo/models"
 )
 
 var (

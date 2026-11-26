@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Météo</title>
+  </head>
+  <body>
+    <h1>Prévision météo sur 7 jours</h1>
+    {{range $i, $date := .Daily.Time}}
+    <section>
+      <h2>{{$date}}</h2>
+      <p>Température minimale : {{index $.Daily.TemperatureMin $i}} °C</p>
+      <p>Température maximale : {{index $.Daily.TemperatureMax $i}} °C</p>
+      <p>Code météo : {{index $.Daily.WeatherCode $i}}</p>
+    </section>
+    {{end}}
+  </body>
+</html>
