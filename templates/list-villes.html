@@ -1,0 +1,71 @@
+{{define "list-villes"}}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Recherchez une commune et consultez sa météo." />
+    <title>Communes — Météo locale</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Météo locale, accueil">
+        <span class="brand-icon" aria-hidden="true">☀</span>
+        <span>Météo locale</span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/villes" aria-current="page">Communes</a>
+      </nav>
+    </header>
+
+    <main class="cities-main">
+      <section class="cities-heading">
+        <p class="eyebrow"><span class="live-dot"></span> Recherche géographique</p>
+        <h1>Les communes<br /><span>près de chez vous.</span></h1>
+        <p class="intro">Recherchez une commune, puis ouvrez sa page météo.</p>
+
+        <form class="search cities-search" action="/villes" method="get">
+          <label for="recherche">Nom ou code postal</label>
+          <div class="search-row">
+            <input id="recherche" name="q" type="search" placeholder="Ex. : Nantes ou 44000" value="{{.Query}}" />
+            <button type="submit">Rechercher <span aria-hidden="true">⌕</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="cities-results" aria-labelledby="results-title">
+        <div class="results-heading">
+          <h2 id="results-title">Communes disponibles</h2>
+          <span class="results-count">{{len .Communes}} résultat(s)</span>
+        </div>
+
+        {{if .Communes}}
+        <ul class="cities-grid">
+          {{range .Communes}}
+          <li class="city-card">
+            <div class="city-symbol" aria-hidden="true">⌖</div>
+            <div class="city-details">
+              <h3>{{.Name}}</h3>
+              <p>Code commune : {{.Code}}</p>
+              {{if .Population}}<p>{{.Population}} habitants</p>{{end}}
+            </div>
+            <a class="city-link" href="/meteo?commune={{.Name}}" aria-label="Voir la météo de {{.Name}}">Météo <span aria-hidden="true">→</span></a>
+          </li>
+          {{end}}
+        </ul>
+        {{else}}
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">⌕</span>
+          <h3>Aucune commune à afficher</h3>
+          <p>Essayez un autre nom ou code postal pour lancer une recherche.</p>
+        </div>
+        {{end}}
+      </section>
+    </main>
+
+    <footer><span>© Météo locale</span><span>Communes : API Géo · Météo : Open-Meteo</span></footer>
+  </body>
+</html>
+{{end}}

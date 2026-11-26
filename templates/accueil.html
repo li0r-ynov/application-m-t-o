@@ -1,0 +1,77 @@
+{{define "accueil"}}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Consultez la météo de votre commune en quelques secondes." />
+    <title>Météo locale — Accueil</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Météo locale, accueil">
+        <span class="brand-icon" aria-hidden="true">☀</span>
+        <span>Météo locale</span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="list-villes.html">Communes</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> Votre météo, près de chez vous</p>
+          <h1 id="hero-title">Le temps qu’il fait<br /><span>chez vous.</span></h1>
+          <p class="intro">Choisissez une commune pour découvrir les prévisions météo locales.</p>
+
+          <form class="search" action="/meteo" method="get">
+            <label for="commune">Nom de la commune</label>
+            <div class="search-row">
+              <input
+                id="commune"
+                name="commune"
+                type="search"
+                placeholder="Ex. : Lyon, Bordeaux, Lille…"
+                autocomplete="address-level2"
+                required
+              />
+              <button type="submit"><span>Voir la météo</span><span aria-hidden="true"> →</span></button>
+            </div>
+            <p class="hint">La commune est recherchée grâce aux données géographiques officielles.</p>
+          </form>
+        </div>
+
+        <aside class="weather-card" aria-label="Aperçu météo">
+          <div class="card-top"><span>APERÇU MÉTÉO</span><span class="sun-mark" aria-hidden="true">☼</span></div>
+          <div class="weather-art" aria-hidden="true">
+            <span class="sun"></span>
+            <span class="cloud cloud-back"></span>
+            <span class="cloud cloud-front"></span>
+          </div>
+          <p class="card-caption">Un coup d’œil sur le ciel</p>
+          <p class="card-subtitle">Les prévisions s’afficheront après votre recherche.</p>
+          <div class="card-divider"></div>
+          <div class="data-source"><span class="source-icon" aria-hidden="true">⌖</span><span><strong>Votre commune</strong><small>À sélectionner</small></span></div>
+        </aside>
+      </section>
+
+      <section class="info" aria-label="Comment ça marche">
+        <article class="info-item">
+          <span class="info-number">01</span>
+          <div><h2>Trouvez votre commune</h2><p>La recherche vous aide à identifier la bonne ville.</p></div>
+        </article>
+        <article class="info-item">
+          <span class="info-number">02</span>
+          <div><h2>Consultez la météo</h2><p>Les prévisions sont calculées pour sa position géographique.</p></div>
+        </article>
+        <p class="credits">Communes : API Géo · Météo : Open-Meteo</p>
+      </section>
+    </main>
+
+    <footer><span>© Météo locale</span><span>Données géographiques et météo fournies par des services publics.</span></footer>
+  </body>
+</html>
+{{end}}

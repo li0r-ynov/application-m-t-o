@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"pokemon/models"
+	"meteo/models"
 	"time"
 )
 
