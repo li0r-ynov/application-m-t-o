@@ -37,6 +37,7 @@ func SearchMeteo(query string) (models.Meteo, error) {
 		// Transmet l'erreur si l'appel à l'API météo échoue.
 		return models.Meteo{}, err
 	}
+	weather.CommuneName = communes[0].Name
 
 	// Renvoie les prévisions météo obtenues.
 	return weather, nil

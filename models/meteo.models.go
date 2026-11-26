@@ -8,6 +8,7 @@ type Meteo struct {
 	Elevation            float64    `json:"elevation"`
 	DailyUnits           DailyUnits `json:"daily_units"`
 	Daily                Daily      `json:"daily"`
+	CommuneName          string     `json:"-"`
 }
 
 type DailyUnits struct {
