@@ -1,13 +1,12 @@
 package models
 
 type Communes struct {
-	Name        string        `json:"nom"`
-	Code        string        `json:"code"`
-	Score       float64       `json:"_score"`
-	Departement []Departement `json:"departement"`
+	Name   string   `json:"nom"`
+	Code   string   `json:"code"`
+	Centre []Centre `json:"centre"`
 }
 
-type Departement struct {
-	Code string `json:"code"`
-	Nom  string `json:"nom"`
+type Centre struct {
+	Type        string `json:"type"`
+	Coordinates []int  `json:"coordinates"`
 }
